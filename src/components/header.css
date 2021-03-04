@@ -1,0 +1,9 @@
+.Header-full-logo:hover{
+    opacity: 0.8;
+  }
+
+  @media (max-width: 545px) {
+    .Heading {
+      display: none;
+    }
+  }

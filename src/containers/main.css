@@ -1,0 +1,15 @@
+.alternate-heading {
+    background-color: rgb(17, 17, 17);
+    color: rgba(255, 255, 255, 0.973);
+    text-align: center;
+    padding: 0.5rem 0.3rem;
+    margin: -1rem;
+    margin-bottom: 0.3rem;
+}
+
+@media (min-width: 546px) {
+    .alternate-heading {
+        display: none;
+    }
+    
+}

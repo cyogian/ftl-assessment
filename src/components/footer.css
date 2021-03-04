@@ -1,0 +1,19 @@
+.Footer-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+
+@media (prefers-reduced-motion: no-preference) {
+    .Footer-logo {
+        animation: Footer-logo-spin infinite 5s linear;
+    }
+}
+
+@keyframes Footer-logo-spin {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
