@@ -63,9 +63,9 @@ class Main extends Component {
                     <title>Full Throttle Labs Assessment | Member List</title>
                 </Helmet>
                 <h1 className="alternate-heading">Member Activity Viewer</h1>
-                <Header as='h2' style={{ textAlign: "center", color: "brown", borderBottom: "3px solid black", paddingBottom: "0.5rem", marginTop: "0", backgroundColor: "rgb(250,250,250)" }}>Member List</Header>
+                <Header as='h2' style={{ textAlign: "center", color: "brown", borderBottom: "3px solid black", padding: "0.5rem 0rem", marginTop: "0", backgroundColor: "rgb(250,250,250)", boxShadow: "0 0 2px 1px black" }}>Member List</Header>
                 <Segment style={{ margin: "0.5rem auto", maxWidth: "850px" }}>
-                    {members.length ? <List celled>{members}</List> : "No members to display in this list."}
+                    {members.length ? <List celled>{members}</List> : "No members to display in this list"}
                 </Segment>
             </Container >
         )
