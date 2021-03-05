@@ -2,6 +2,10 @@
     opacity: 0.8;
   }
 
+.Heading {
+  color:whitesmoke
+}
+
   @media (max-width: 545px) {
     .Heading {
       display: none;
