@@ -1,2 +1,2 @@
-# Full Throttle Lab Assessment Project
+# Full Throttle Lab - Assessment Project
 ## Member Activity Viewer Application
