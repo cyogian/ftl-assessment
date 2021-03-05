@@ -1,0 +1,28 @@
+.Member {
+    cursor: pointer;
+}
+.Member:hover {
+    background-color: #f3f3f3dc;
+    opacity: 0.95;
+    border-radius: 5px;
+}
+.MemberContent {
+    padding: 1rem 1rem;
+}
+
+.parent {
+   position: relative;
+   padding-left: 2rem;
+}
+
+.child {
+   position: absolute;
+   top: calc(50% - 0.5rem);
+   left: 0.2rem;
+   color: rgb(94, 94, 94);
+   outline: grey;
+}
+
+.parent:hover .child{
+    color: rgb(171, 101, 252);
+}
