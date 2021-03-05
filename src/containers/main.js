@@ -3,7 +3,8 @@ import {
     Container,
     Header,
     List,
-    Segment
+    Segment,
+    Icon
 } from 'semantic-ui-react'
 
 import axios from "../utilities/axios"
@@ -17,30 +18,29 @@ class Main extends Component {
         members: [],
         currentMemberID: "",
         currentMemberTZ: "",
+        currentMemberNAME: "",
         isLoading: true
     }
 
-    onOpen = (id, tz) => {
+    onOpen = (id, tz, name) => {
         this.setState({
             isOpen: true,
             currentMemberID: id,
-            currentMemberTZ: tz
+            currentMemberTZ: tz,
+            currentMemberNAME: name
         })
-        console.log("Opened with " + id + " " + tz)
     }
 
     onClose = () => {
         this.setState({
             isOpen: false,
-            currentMemberID: "",
-            currentMemberTZ: "",
         })
-        console.log("Closed")
     }
+
+
     componentDidMount = () => {
         axios.get("/members")
             .then((response) => {
-                console.log(response)
                 this.setState({
                     isLoading: false,
                     members: response.data
@@ -59,7 +59,7 @@ class Main extends Component {
                     key={member.id}
                     id={member.id}
                     real_name={member.real_name}
-                    onMemberClick={() => this.onOpen(member.id, member.tz)}
+                    onMemberClick={() => this.onOpen(member.id, member.tz, member.real_name)}
                 />
             )
         })
@@ -67,14 +67,15 @@ class Main extends Component {
     }
     render() {
         let members = this.createMemberList(this.state.members)
+        let { isOpen, currentMemberID, currentMemberTZ, currentMemberNAME } = this.state
         return (
             <Container style={{ marginTop: '4.5rem', marginLeft: "0 !important", marginRight: "0 !important", maxWidth: "none !important" }} className="Main" fluid >
                 <h1 className="alternate-heading">Member Activity Viewer</h1>
-                <Header as='h2' style={{ textAlign: "center", color: "brown", borderBottom: "3px solid black", padding: "0.5rem 0rem", marginTop: "0", backgroundColor: "rgb(250,250,250)", boxShadow: "0 0 2px 1px black" }}>Member List</Header>
+                <Header as='h2' style={{ textAlign: "center", color: "brown", borderBottom: "3px solid black", padding: "0.5rem 0rem", marginTop: "0", backgroundColor: "rgb(250,250,250)", boxShadow: "0 0 2px 1px black" }}><Icon size="mini" name="list alternate outline" />Members</Header>
                 <Segment loading={this.state.isLoading} style={{ margin: "0.5rem auto", maxWidth: "850px" }}>
                     {members.length ? <List celled>{members}</List> : "No members to display in this list"}
                 </Segment>
-                <ActivityPeriods open={this.state.isOpen} onClose={this.onClose} />
+                <ActivityPeriods open={isOpen} onClose={this.onClose} currentMemberNAME={currentMemberNAME} currentMemberID={currentMemberID} currentMemberTZ={currentMemberTZ} />
             </Container >
         )
     }

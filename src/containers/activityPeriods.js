@@ -1,38 +1,120 @@
 import React, { Component } from "react";
 
-import { Button, Icon, Image, Modal } from 'semantic-ui-react'
+import { Icon, Modal, Segment, List, Input, Header } from 'semantic-ui-react'
+import ActivityPeriod from '../components/activityPeriod'
 
+import axios from "../utilities/axios"
+import moment from "moment-timezone"
 class ActivityPeriods extends Component {
-    state = {
-        activityPeriods: [],
-        isLoading: true
+    constructor(props) {
+        super(props)
+        let date = new Date().toISOString().slice(0, 10)
+        this.state = {
+            activityPeriods: [],
+            isLoading: true,
+            date: date
+        }
+    }
+    onDateChange = (e) => {
+        let url = `/members/${this.props.currentMemberID}/activity_periods`
+        let dayIn = new Date(e.target.value)
+        let d = dayIn.toISOString().slice(0, 10)
+        let options = {
+            params: {
+                _sort: "start_time",
+                _order: "dsc",
+                start_time_like: `${d}`
+            }
+        }
+        axios.get(url, options)
+            .then((response) => {
+                this.setState({
+                    isLoading: false,
+                    activityPeriods: response.data
+                })
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+        this.setState({
+            date: e.target.value,
+            isLoading: true
+        })
+    }
+
+    componentDidUpdate(prevProps) {
+        const { currentMemberID } = this.props
+        if (prevProps.currentMemberID !== currentMemberID) {
+            let url = `/members/${this.props.currentMemberID}/activity_periods`
+
+            // querying data by date < activity_periods["start_time"] />
+            let dayIn = new Date(this.state.date)
+            let d = dayIn.toISOString().slice(0, 10)
+            let options = {
+                params: {
+                    _sort: "start_time",
+                    _order: "dsc",
+                    start_time_like: `${d}`
+                }
+            }
+            axios.get(url, options)
+                .then((response) => {
+                    this.setState({
+                        isLoading: false,
+                        activityPeriods: response.data
+                    })
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
+
+    }
+
+    createActivityPeriodList = (activityPeriods) => {
+        const apl = activityPeriods.map((activityPeriod) => {
+            // assuming that member.id will always be unique
+            return (
+                <ActivityPeriod
+                    key={activityPeriod.id}
+                    id={activityPeriod.id}
+                    // using moment-timezone to convert time to specific timezone
+                    startTime={moment(activityPeriod.start_time).tz(this.props.currentMemberTZ).format('MMMM Do YYYY, h:mm a')}
+                    endTime={moment(activityPeriod.end_time).tz(this.props.currentMemberTZ).format('MMMM Do YYYY, h:mm a')}
+
+                />
+            )
+        })
+        return apl
     }
 
     render() {
-        const { open, onClose } = this.props
+        const { open, onClose, currentMemberID, currentMemberNAME, currentMemberTZ } = this.props
+        const { activityPeriods } = this.state
         return (
             <Modal
-                loading={this.state.isLoading}
                 closeIcon
                 open={open}
                 onClose={onClose}
                 closeOnDimmerClick={false}
                 closeOnEscape={true}
             >
-                <Modal.Header>Activity Period List</Modal.Header>
-                <Modal.Content image>
-                    <Image size='medium' src='https://react.semantic-ui.com/images/wireframe/image.png' wrapped />
-                    <Modal.Description>
-                        <p>
-                            This is an example of expanded content that will cause the modal's
-                            dimmer to scroll.
-                        </p>
-                    </Modal.Description>
+                <Modal.Header>
+                    <Icon name="clock outline" /> Activity Periods
+                    <hr />
+                    <Header.Content>
+                        <h4 style={{ color: "black", margin: "1rem 0rem 0rem 1.7rem" }}>{currentMemberNAME}</h4>
+                        <i className="fas fa-hashtag" style={{ fontSize: "0.9rem", color: "#fcc45c", fontWeight: "bolder", marginLeft: "1.5rem" }}></i>&nbsp;
+                        <span style={{ fontSize: "0.85rem", color: "grey" }}>{currentMemberID}&nbsp;&nbsp; {" | "} &nbsp;&nbsp;{currentMemberTZ}</span>
+                    </Header.Content>
+                </Modal.Header>
+                <Modal.Content>
+                    <div style={{ display: "flex", justifyContent: "center" }}><Input type="date" value={this.state.date} onChange={this.onDateChange} /></div>
+                    <Segment loading={this.state.isLoading} style={{ margin: "0.5rem auto" }}>
+                        {activityPeriods.length ? <List celled>{this.createActivityPeriodList(activityPeriods)}</List> : "No members to display in this list"}
+                    </Segment>
                 </Modal.Content>
                 <Modal.Actions>
-                    <Button primary onClick={onClose}>
-                        Proceed <Icon name='right chevron' />
-                    </Button>
                 </Modal.Actions>
             </Modal>
         )
