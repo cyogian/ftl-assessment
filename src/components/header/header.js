@@ -6,7 +6,7 @@ import {
 } from 'semantic-ui-react'
 
 import "./header.css"
-import logoFull from '../static/logoFull.png'
+import logoFull from '../../static/logoFull.png'
 
 const Header = () => (
     <Menu fixed='top' inverted className="Header">

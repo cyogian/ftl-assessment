@@ -6,7 +6,7 @@ import {
     Segment,
 } from 'semantic-ui-react'
 
-import logo from "../static/logo.png"
+import logo from "../../static/logo.png"
 import "./footer.css"
 
 const Footer = () => (

@@ -1,8 +1,8 @@
 import React from "react"
 
-import Header from "./components/header"
-import Footer from "./components/footer"
-import Main from "./containers/main"
+import Header from "./components/header/header"
+import Footer from "./components/footer/footer"
+import Main from "./containers/main/main"
 
 import 'semantic-ui-css/semantic.min.css'
 import './App.css'

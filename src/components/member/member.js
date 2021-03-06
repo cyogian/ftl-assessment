@@ -3,6 +3,7 @@ import { List } from "semantic-ui-react"
 
 import "./member.css"
 const Member = (props) => {
+    // Member List Item - Pure Functional Component 
     return (
         <List.Item onClick={props.onMemberClick} className="Member parent">
             <span className="child"><i className="fas fa-chevron-right"></i></span>

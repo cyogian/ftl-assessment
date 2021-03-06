@@ -8,11 +8,11 @@ import {
     Input
 } from 'semantic-ui-react'
 
-import axios from "../utilities/axios"
+import axios from "../../utilities/axios"
 
 import "./main.css"
-import Member from "../components/member"
-import ActivityPeriods from "./activityPeriods"
+import Member from "../../components/member/member"
+import ActivityPeriods from "../activityPeriods/activityPeriods"
 class Main extends Component {
     state = {
         isOpen: false,

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
 import { Icon, Modal, Segment, List, Input, Header } from 'semantic-ui-react'
-import ActivityPeriod from '../components/activityPeriod'
+import ActivityPeriod from "../../components/activityPeriod/activityPeriod"
 
-import axios from "../utilities/axios"
+import axios from "../../utilities/axios"
 import moment from "moment-timezone"
 class ActivityPeriods extends Component {
     constructor(props) {

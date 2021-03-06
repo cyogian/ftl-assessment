@@ -2,6 +2,7 @@ import React from "react"
 import { List } from "semantic-ui-react"
 
 const ActivityPeriod = props => {
+    // ActivityPeriod List Item - Pure Functional Component
     let { startTime, endTime } = props
     return (
         <List.Item className="ActivityPeriod">
