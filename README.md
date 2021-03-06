@@ -9,10 +9,10 @@ This project contains a Single Page Web Application made using React, deployed o
 ### The Project Hierarchy 
 **src**-+  
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|-**components**-+ \<pure functional components depend on props\>  
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|-**activityPeriod**  
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|-**activityPeriod** \<Activity Period List Item - Reusable \>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|-**header**  
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|-**footer**  
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|-**member**  
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|-**member**  \<Member List Item - Reusable\>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|  
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|-**containers**-+ \<components with own state depend on props & own state change\>   
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|-**main** \<the main page of site that shows `MemberList` made with `member` component\>  
@@ -36,4 +36,4 @@ This project contains a Single Page Web Application made using React, deployed o
   - Pagonation : not yet implemented
  
 ## Note
- > Select Dates between 28-02-2021 to 4-02-2021 for getting results as the data contain most activities of this period
+ > Select Dates between 28-02-2021 to 4-03-2021 for getting results as the data contain most activities of this period
