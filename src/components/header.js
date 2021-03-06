@@ -11,7 +11,7 @@ import logoFull from '../static/logoFull.png'
 const Header = () => (
     <Menu fixed='top' inverted className="Header">
         <Container fluid>
-            <Menu.Item as='a' header className=".Header-full-logo">
+            <Menu.Item as='a' header className=".Header-full-logo" href="/">
                 <Image size='small' src={logoFull} />
                 <span style={{ height: "100%", alignItems: "flex-end", display: "flex", fontSize: "0.95rem", fontWeight: "lighter", marginLeft: "-3.5rem" }}>Assessment</span>
             </Menu.Item>

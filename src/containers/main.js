@@ -161,7 +161,7 @@ class Main extends Component {
                                         borderRadius: "4px"
                                     }
                                 }>
-                                "No members to display in this list"
+                                No members to display in this list
                             </span>}
                 </Segment>
                 <ActivityPeriods open={isOpen} onClose={this.onClose} currentMemberNAME={currentMemberNAME} currentMemberID={currentMemberID} currentMemberTZ={currentMemberTZ} />
