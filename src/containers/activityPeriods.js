@@ -15,9 +15,12 @@ class ActivityPeriods extends Component {
             date: date
         }
     }
-    onDateChange = (e) => {
+    fetchData = (date) => {
+        // reusable Function to fetch data
         let url = `/members/${this.props.currentMemberID}/activity_periods`
-        let dayIn = new Date(e.target.value)
+
+        // querying data by date < activity_periods["start_time"] />
+        let dayIn = new Date(date)
         let d = dayIn.toISOString().slice(0, 10)
         let options = {
             params: {
@@ -36,39 +39,31 @@ class ActivityPeriods extends Component {
             .catch((error) => {
                 console.log(error)
             })
+    }
+    onDateChange = (e) => {
+        this.fetchData(e.target.value)
         this.setState({
             date: e.target.value,
             isLoading: true
         })
     }
+    onClose = () => {
+        let dayIn = new Date()
+        let d = dayIn.toISOString().slice(0, 10)
+        this.setState({
+            date: d,
+        })
+        this.props.onClose()
+    }
 
     componentDidUpdate(prevProps) {
-        const { currentMemberID } = this.props
-        if (prevProps.currentMemberID !== currentMemberID) {
-            let url = `/members/${this.props.currentMemberID}/activity_periods`
-
-            // querying data by date < activity_periods["start_time"] />
-            let dayIn = new Date(this.state.date)
-            let d = dayIn.toISOString().slice(0, 10)
-            let options = {
-                params: {
-                    _sort: "start_time",
-                    _order: "dsc",
-                    start_time_like: `${d}`
-                }
-            }
-            axios.get(url, options)
-                .then((response) => {
-                    this.setState({
-                        isLoading: false,
-                        activityPeriods: response.data
-                    })
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
+        const { currentMemberID, open } = this.props
+        if (prevProps.currentMemberID !== currentMemberID || prevProps.open !== open) {
+            this.fetchData(this.state.date)
+            this.setState({
+                isLoading: true
+            })
         }
-
     }
 
     createActivityPeriodList = (activityPeriods) => {
@@ -89,13 +84,13 @@ class ActivityPeriods extends Component {
     }
 
     render() {
-        const { open, onClose, currentMemberID, currentMemberNAME, currentMemberTZ } = this.props
+        const { open, currentMemberID, currentMemberNAME, currentMemberTZ } = this.props
         const { activityPeriods } = this.state
         return (
             <Modal
                 closeIcon
                 open={open}
-                onClose={onClose}
+                onClose={this.onClose}
                 closeOnDimmerClick={false}
                 closeOnEscape={true}
             >
