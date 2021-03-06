@@ -20,3 +20,18 @@ This project contains a Single Page Web Application made using React, deployed o
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|-**axios** \<baseUrl configured instance of axios for fetching data\>  
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|  
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|-**static** \<all other files such as logo...\>  
+
+## Features
+- MemberList
+  - View
+  - Search
+  - Click Member To Open Activity Viewer Modal
+  - Pagination : not yet implemented
+
+- Activity Viewer
+  - View
+  - Filter By Date
+  - Pagonation : not yet implemented
+ 
+## Note
+ > Select Dates between 28-02-2021 to 4-02-2021 for getting results as the data contain most acttivities of this period
