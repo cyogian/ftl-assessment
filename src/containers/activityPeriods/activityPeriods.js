@@ -106,7 +106,23 @@ class ActivityPeriods extends Component {
                 <Modal.Content>
                     <div style={{ display: "flex", justifyContent: "center" }}><Input type="date" value={this.state.date} onChange={this.onDateChange} /></div>
                     <Segment loading={this.state.isLoading} style={{ margin: "0.5rem auto" }}>
-                        {activityPeriods.length ? <List celled>{this.createActivityPeriodList(activityPeriods)}</List> : "No members to display in this list"}
+                        {
+                            activityPeriods.length
+                                ? <List celled>{this.createActivityPeriodList(activityPeriods)}</List>
+                                : <span
+                                    style={
+                                        {
+                                            padding: "0.4rem",
+                                            marginLeft: "1rem",
+                                            color: "crimson",
+                                            border: "2px solid #CF000F",
+                                            borderRadius: "4px"
+                                        }
+                                    }
+                                >
+                                    No activities to display in this list
+                            </span>
+                        }
                     </Segment>
                 </Modal.Content>
                 <Modal.Actions>
