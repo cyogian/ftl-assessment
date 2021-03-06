@@ -5,7 +5,8 @@ import {
     List,
     Segment,
     Icon,
-    Input
+    Input,
+    Message
 } from 'semantic-ui-react'
 
 import axios from "../../utilities/axios"
@@ -22,7 +23,9 @@ class Main extends Component {
         currentMemberNAME: "",
         isLoading: true,
         searchTerm: "",
-        searchLoading: false
+        searchLoading: false,
+        errorMessage: "",
+        showError: false
     }
 
     onHandleSearch = (e) => {
@@ -40,9 +43,19 @@ class Main extends Component {
         }
         axios.get(url, options)
             .then((response) => {
+                console.log(response)
                 this.setState({
                     searchLoading: false,
-                    members: response.data
+                    members: response.data,
+                    errorMessage: "",
+                    showError: false
+                })
+            })
+            .catch((error) => {
+                this.setState({
+                    searchLoading: false,
+                    errorMessage: error.toJSON().message,
+                    showError: true
                 })
             })
 
@@ -75,16 +88,30 @@ class Main extends Component {
         // fetches data automatically when the component is first mounted
         axios.get("/members")
             .then((response) => {
+                console.log(response)
                 this.setState({
                     isLoading: false,
-                    members: response.data
+                    members: response.data,
+                    errorMessage: "",
+                    showError: false
                 })
             })
             .catch((error) => {
-                console.log(error)
+                this.setState({
+                    isLoading: false,
+                    errorMessage: error.toJSON().message,
+                    showError: true
+                })
             })
     }
 
+    handleDismiss = () => {
+        // dismisses error message
+        this.setState({
+            errorMessage: "",
+            showError: false
+        })
+    }
     createMemberList = (members) => {
         const ml = members.map((member) => {
             // assuming that member.id will always be unique, it is passed as key
@@ -110,7 +137,8 @@ class Main extends Component {
                         marginTop: '4.5rem',
                         marginLeft: "0 !important",
                         marginRight: "0 !important",
-                        maxWidth: "none !important"
+                        maxWidth: "none !important",
+                        position: "relative"
                     }
                 }
                 className="Main" fluid >
@@ -140,6 +168,14 @@ class Main extends Component {
                         }
                     }
                 >
+                    {this.state.showError
+                        ?
+                        (<Message negative onDismiss={this.handleDismiss}>
+                            <Message.Header>Oops, something went wrong!</Message.Header>
+                            <p>{this.state.errorMessage}</p>
+                        </Message>)
+                        : null
+                    }
                     <Input
                         icon="search"
                         loading={this.state.searchLoading}
