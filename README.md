@@ -2,7 +2,9 @@
 ## Member Activity Viewer Application
 [![Netlify Status](https://api.netlify.com/api/v1/badges/14e8226e-bbdd-4e47-963c-9ad2dc786462/deploy-status)](https://app.netlify.com/sites/ftl-assessment/deploys)
 
-This project contains a Single Page Web Application made using React, deployed on netlify at [this link](https://ftl.cyogian.dev) with a backend JSON API Server made with [json-server.js](https://github.com/typicode/json-server) deployed on repl at [this link](https://json-server.cyogian.repl.co/) with source code on [this public github repo](https://github.com/cyogian/json-server).
+This project contains a Single Page Web Application made using React, deployed on netlify at [this link](https://ftl.cyogian.dev) with a backend JSON API Server made with [json-server.js](https://github.com/typicode/json-server) deployed on repl at [this link](https://json-server.cyogian.repl.co/) with source code on [this public github repo](https://github.com/cyogian/json-server).  
+
+> Do Check the JSON-Server repo to have further insight about backend of this app aka JSON API.
 
 ### The Project Hierarchy 
 **src**-+  
@@ -34,4 +36,4 @@ This project contains a Single Page Web Application made using React, deployed o
   - Pagonation : not yet implemented
  
 ## Note
- > Select Dates between 28-02-2021 to 4-02-2021 for getting results as the data contain most acttivities of this period
+ > Select Dates between 28-02-2021 to 4-02-2021 for getting results as the data contain most activities of this period
