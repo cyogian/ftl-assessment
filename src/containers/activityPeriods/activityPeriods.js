@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Icon, Modal, Segment, List, Input, Header } from 'semantic-ui-react'
+import { Icon, Modal, Segment, List, Input, Header, TransitionablePortal } from 'semantic-ui-react'
 import ActivityPeriod from "../../components/activityPeriod/activityPeriod"
 
 import axios from "../../utilities/axios"
@@ -90,47 +90,49 @@ class ActivityPeriods extends Component {
         const { open, currentMemberID, currentMemberNAME, currentMemberTZ } = this.props
         const { activityPeriods } = this.state
         return (
-            <Modal
-                closeIcon
-                open={open}
-                onClose={this.onClose}
-                closeOnDimmerClick={false}
-                closeOnEscape={true}
-            >
-                <Modal.Header>
-                    <Icon name="clock outline" /> Activity Periods
+            <TransitionablePortal open={open} transition={{ animation: "scale", duration: "500" }} >
+                <Modal
+                    closeIcon
+                    open={true}
+                    onClose={this.onClose}
+                    closeOnDimmerClick={false}
+                    closeOnEscape={true}
+                >
+                    <Modal.Header>
+                        <Icon name="clock outline" /> Activity Periods
                     <hr />
-                    <Header.Content>
-                        <h4 style={{ color: "black", margin: "1rem 0rem 0rem 1.7rem" }}>{currentMemberNAME}</h4>
-                        <i className="fas fa-hashtag" style={{ fontSize: "0.9rem", color: "#fcc45c", fontWeight: "bolder", marginLeft: "1.5rem" }}></i>&nbsp;
+                        <Header.Content>
+                            <h4 style={{ color: "black", margin: "1rem 0rem 0rem 1.7rem" }}>{currentMemberNAME}</h4>
+                            <i className="fas fa-hashtag" style={{ fontSize: "0.9rem", color: "#fcc45c", fontWeight: "bolder", marginLeft: "1.5rem" }}></i>&nbsp;
                         <span style={{ fontSize: "0.85rem", color: "grey" }}>{currentMemberID}&nbsp;&nbsp; {" | "} &nbsp;&nbsp;{currentMemberTZ}</span>
-                    </Header.Content>
-                </Modal.Header>
-                <Modal.Content>
-                    <div style={{ display: "flex", justifyContent: "center" }}><Input type="date" value={this.state.date} onChange={this.onDateChange} /></div>
-                    <Segment loading={this.state.isLoading} style={{ margin: "0.5rem auto" }}>
-                        {
-                            activityPeriods.length
-                                ? <List celled>{this.createActivityPeriodList(activityPeriods)}</List>
-                                : <span
-                                    style={
-                                        {
-                                            padding: "0.4rem",
-                                            marginLeft: "1rem",
-                                            color: "crimson",
-                                            border: "2px solid #CF000F",
-                                            borderRadius: "4px"
+                        </Header.Content>
+                    </Modal.Header>
+                    <Modal.Content>
+                        <div style={{ display: "flex", justifyContent: "center" }}><Input type="date" value={this.state.date} onChange={this.onDateChange} /></div>
+                        <Segment loading={this.state.isLoading} style={{ margin: "0.5rem auto" }}>
+                            {
+                                activityPeriods.length
+                                    ? <List celled>{this.createActivityPeriodList(activityPeriods)}</List>
+                                    : <span
+                                        style={
+                                            {
+                                                padding: "0.4rem",
+                                                marginLeft: "1rem",
+                                                color: "crimson",
+                                                border: "2px solid #CF000F",
+                                                borderRadius: "4px"
+                                            }
                                         }
-                                    }
-                                >
-                                    No activities to display in this list
+                                    >
+                                        No activities to display in this list
                             </span>
-                        }
-                    </Segment>
-                </Modal.Content>
-                <Modal.Actions>
-                </Modal.Actions>
-            </Modal>
+                            }
+                        </Segment>
+                    </Modal.Content>
+                    <Modal.Actions>
+                    </Modal.Actions>
+                </Modal>
+            </TransitionablePortal>
         )
     }
 }
