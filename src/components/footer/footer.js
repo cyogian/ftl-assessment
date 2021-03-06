@@ -14,20 +14,20 @@ const Footer = () => (
         <Container textAlign='center'>
             <Image centered size='tiny' src={logo} className="Footer-logo" />
             <List horizontal inverted divided link size='small'>
-                <List.Item as='a' href='/'>
+                <List.Item as='a' href='#'>
                     Site Map
                 </List.Item>
-                <List.Item as='a' href='/'>
+                <List.Item as='a' href='#'>
                     Contact Us
                 </List.Item>
-                <List.Item as='a' href='/'>
+                <List.Item as='a' href='#'>
                     Terms and Conditions
                 </List.Item>
-                <List.Item as='a' href='/'>
+                <List.Item as='a' href='#'>
                     Privacy Policy
                 </List.Item>
             </List>
-            <div className="Copyright">Copyright © {new Date().getFullYear()} <a href="https://cyogian.dev">  Amar Nath Yogi </a> All Rights Reserved</div>
+            <div className="Copyright">Copyright © {new Date().getFullYear()} <a href="https://cyogian.dev" target="_blank" rel="noopener noreferrer">  Amar Nath Yogi </a> All Rights Reserved</div>
         </Container>
     </Segment>
 )
