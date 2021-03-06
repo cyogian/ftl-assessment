@@ -10,7 +10,7 @@ import logo from "../../static/logo.png"
 import "./footer.css"
 
 const Footer = () => (
-    <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '1em 0em', width: "100%" }} className="Footer">
+    <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '1em 0em 2.5em 0em', width: "100%" }} className="Footer">
         <Container textAlign='center'>
             <Image centered size='tiny' src={logo} className="Footer-logo" />
             <List horizontal inverted divided link size='small'>
@@ -27,6 +27,7 @@ const Footer = () => (
                     Privacy Policy
                 </List.Item>
             </List>
+            <div className="Copyright">Copyright © {new Date().getFullYear()} <a href="https://cyogian.dev">  Amar Nath Yogi </a> All Rights Reserved</div>
         </Container>
     </Segment>
 )
