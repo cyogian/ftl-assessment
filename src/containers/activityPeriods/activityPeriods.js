@@ -41,6 +41,7 @@ class ActivityPeriods extends Component {
             })
     }
     onDateChange = (e) => {
+        // fetching data whenver date is changed
         this.fetchData(e.target.value)
         this.setState({
             date: e.target.value,
@@ -48,6 +49,7 @@ class ActivityPeriods extends Component {
         })
     }
     onClose = () => {
+        // closing the modal & resetting the date
         let dayIn = new Date()
         let d = dayIn.toISOString().slice(0, 10)
         this.setState({
@@ -57,6 +59,7 @@ class ActivityPeriods extends Component {
     }
 
     componentDidUpdate(prevProps) {
+        // fetching data on prop change { memberId } i.e. different member is clicked, or modal visibility is toggled
         const { currentMemberID, open } = this.props
         if (prevProps.currentMemberID !== currentMemberID || prevProps.open !== open) {
             this.fetchData(this.state.date)
