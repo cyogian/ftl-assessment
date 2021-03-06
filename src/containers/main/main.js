@@ -29,23 +29,23 @@ class Main extends Component {
         // a method that runs on every key press inside Search Box & Fetches the member list related to that search
         let value = e.target.value
         let searchLoading = false
-        if (value !== "") {
-            searchLoading = true
-            let url = `/members`
-            // query param option for searching everywhere  <url>?q=searchterm
-            let options = {
-                params: {
-                    q: value
-                }
+
+        searchLoading = true
+        let url = `/members`
+        // query param option for searching everywhere  <url>?q=searchterm
+        let options = {
+            params: {
+                q: value
             }
-            axios.get(url, options)
-                .then((response) => {
-                    this.setState({
-                        searchLoading: false,
-                        members: response.data
-                    })
-                })
         }
+        axios.get(url, options)
+            .then((response) => {
+                this.setState({
+                    searchLoading: false,
+                    members: response.data
+                })
+            })
+
         // setting state after get request as javascript doesn't wait for fetch to complete instead make use of Promises
         this.setState({
             searchTerm: value,
