@@ -191,7 +191,7 @@ class Main extends Component {
                                 style={
                                     {
                                         padding: "0.4rem",
-                                        marginLeft: "1rem",
+                                        marginLeft: "1rem", marginTop: "1rem",
                                         color: "crimson",
                                         border: "2px solid #CF000F",
                                         borderRadius: "4px"
