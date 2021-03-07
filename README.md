@@ -33,7 +33,6 @@ This project contains a Single Page Web Application made using React, deployed o
 - Activity Viewer
   - View
   - Filter By Date
-  - Pagination : not yet implemented
  
 ## Note
  > Select Dates between 01-03-2021 to 10-03-2021 for getting results as the data contain most activities of this period
