@@ -92,10 +92,10 @@ class ActivityPeriods extends Component {
                     key={activityPeriod.id}
                     id={activityPeriod.id}
                     // using moment-timezone to convert time to specific timezone
-                    // startTime={moment(activityPeriod.start_time).tz(this.props.currentMemberTZ).format('MMMM Do YYYY, h:mm a')}
-                    // endTime={moment(activityPeriod.end_time).tz(this.props.currentMemberTZ).format('MMMM Do YYYY, h:mm a')}
-                    startTime={moment(activityPeriod.start_time).format('MMMM Do YYYY, h:mm a')}
-                    endTime={moment(activityPeriod.end_time).format('MMMM Do YYYY, h:mm a')}
+                    startTime={moment(activityPeriod.start_time).tz(this.props.currentMemberTZ).format('MMMM Do YYYY, h:mm a')}
+                    endTime={moment(activityPeriod.end_time).tz(this.props.currentMemberTZ).format('MMMM Do YYYY, h:mm a')}
+                // startTime={moment(activityPeriod.start_time).format('MMMM Do YYYY, h:mm a')}
+                // endTime={moment(activityPeriod.end_time).format('MMMM Do YYYY, h:mm a')}
                 />
             )
         })
