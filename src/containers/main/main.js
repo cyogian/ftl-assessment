@@ -187,7 +187,7 @@ class Main extends Component {
                     {
                         members.length
                             ? <List celled>{members}</List>
-                            : <span
+                            : <div
                                 style={
                                     {
                                         padding: "0.4rem",
@@ -198,7 +198,7 @@ class Main extends Component {
                                     }
                                 }>
                                 No members to display in this list
-                            </span>}
+                            </div>}
                 </Segment>
                 <ActivityPeriods open={isOpen} onClose={this.onClose} currentMemberNAME={currentMemberNAME} currentMemberID={currentMemberID} currentMemberTZ={currentMemberTZ} />
             </Container >
