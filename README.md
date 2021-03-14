@@ -7,7 +7,7 @@ This project contains a Single Page Web Application made using React, deployed o
 > Do Check the JSON-Server repo to have further insight about backend of this app aka JSON API.
 
 ### The Project Hierarchy 
-**src**-+  
+**src**--+  
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|-**components**-+ \<pure functional components depend on props\>  
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|-**activityPeriod** \<Activity Period List Item - Reusable \>  
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|-**header**  
