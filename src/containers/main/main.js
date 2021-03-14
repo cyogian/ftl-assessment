@@ -43,7 +43,6 @@ class Main extends Component {
         }
         axios.get(url, options)
             .then((response) => {
-                console.log(response)
                 this.setState({
                     searchLoading: false,
                     members: response.data,
@@ -88,7 +87,6 @@ class Main extends Component {
         // fetches data automatically when the component is first mounted
         axios.get("/members")
             .then((response) => {
-                console.log(response)
                 this.setState({
                     isLoading: false,
                     members: response.data,
