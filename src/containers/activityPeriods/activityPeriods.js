@@ -152,6 +152,7 @@ class ActivityPeriods extends Component {
                             </span>
                             }
                         </Segment>
+                        <Message positive><strong>Note: </strong>Select Dates between 01-03-2021 to 10-03-2021 for getting results as the data contain most activities of this period.</Message>
                     </Modal.Content>
                     <Modal.Actions>
                     </Modal.Actions>
